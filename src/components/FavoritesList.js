@@ -5,8 +5,8 @@ export default class FavoritesList extends Component {
   render () {
     const buttonText = (this.props.showFavs) ? 'Hide Favorite Store': 'Show Favorite Store'
     return(
-      <div className="board">
-        <h1>My Favorites Stores</h1>
+      <div className="favList">
+        <button onClick={this.props.toggleFavsList}>{buttonText}</button>
         {(this.props.showFavs) ?
           this.props.favStores.map((store, index) => {
             return (
@@ -18,7 +18,6 @@ export default class FavoritesList extends Component {
           })
         : <div>(Click on the icons to add them to your Favorites List)</div>
         }
-        <button onClick={this.props.toggleFavsList}>{buttonText}</button>
       </div>
     )
   }

@@ -6,7 +6,7 @@ import FavoritesList from './FavoritesList';
 
 export default class App extends Component {
 
-  //state
+  // initial state
   constructor(props) {
     super(props);
     this.state = {
@@ -59,7 +59,7 @@ export default class App extends Component {
           <li>As a student, I want to see a map that has all the stores represented as markers/pins on the map.</li>
           <li>As a student, I want to be able to click on a store and add it to a list of 'My Favorite Stores'</li>
           </ul>
-
+          
           <p>Helpful tips:</p>
           <ul>
           <li><i>Feel free to use our Google Maps API key: AIzaSyCVH8e45o3d-5qmykzdhGKd1-3xYua5D2A</i></li>
