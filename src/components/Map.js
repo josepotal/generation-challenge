@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import stores from '../utils/coords_store_directory.json'
 
+//import data from '../utils/address-converter.js'
+
 const google = window.google;
 
 export default class Map extends Component {
@@ -64,7 +66,7 @@ export default class Map extends Component {
     return (
       <div>
         <h1>Map</h1>
-        <div style={{width: 1000, height: 800, border: '1px solid black'}} ref="map"></div>
+        <div className="mapContainer" ref="map"></div>
       </div>
     );
   }

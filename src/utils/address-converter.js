@@ -1,12 +1,14 @@
 // we import the json data locally
-import data from 'json!../../store_directory.json'
+import data from './store_directory.json'
 
-console.log(data.items.length)
-let sliced1Data = data.items.slice(269, 273);
-console.log(sliced1Data)
+const google = window.google
+
+console.log(data)
+//let sliced1Data = data.items.slice(269, 273);
+//console.log(sliced1Data)
 let newArray = []
 
-sliced1Data.map((item, index) => {
+data.map((item, index) => {
   //console.log(geocodeAddress(item))
   const loc = geocodeAddress(item)
   console.log(loc)
@@ -30,11 +32,11 @@ function geocodeAddress(item){
         loc.push(lng)
         return;
       }
-      // } else {
-      //   if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
-      //     console.log('exceeded')
-      //   }
-      // }
+       else {
+        if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+          console.log('exceeded')
+        }
+      }
   })
   return loc
 }

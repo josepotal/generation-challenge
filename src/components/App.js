@@ -9,8 +9,12 @@ export default class App extends Component {
   //state
   constructor(props) {
     super(props);
-    this.state = { favStores: [] };
+    this.state = {
+      favStores: [],
+      showFavs: false
+     };
     this.handleAddFavs = this.handleAddFavs.bind(this);
+    this.toggleFavsList = this.toggleFavsList.bind(this);
   }
 
   // function handle click update state
@@ -24,7 +28,15 @@ export default class App extends Component {
     });
   }
 
+  // function to show/hide list
+  toggleFavsList(){
+    this.setState({
+      showFavs: !this.state.showFavs
+    })
+  }
+
   render() {
+    const { favStores, showFavs } = this.state
     return (
       <div>
         {/* <h1>Hi! Welcome to the Generation take-home interview!</h1>
@@ -59,10 +71,12 @@ export default class App extends Component {
         <Map
           initialPosition={{lat: 19.43236, lng: -99.1332}}
           handleAddFavs={this.handleAddFavs}
-          favStores={this.state.favStores}
+          favStores={favStores}
         />
         <FavoritesList
-          favStores={this.state.favStores}
+          favStores={favStores}
+          showFavs={showFavs}
+          toggleFavsList={this.toggleFavsList}
         />
       </div>
     );
