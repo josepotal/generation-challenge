@@ -1,13 +1,13 @@
 .header {
   height: 60px;
-  background: #1B2E5C;
+  background: $color-light-blue;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &-title{
-    font-size: 1em;
+    font-size: 1.6em;
     font-weight: bold;
-    color: #7CB854;
+    color: $color-white;
   }
 }

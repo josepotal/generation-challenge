@@ -23,27 +23,44 @@ export default class Map extends Component {
   }
 
   setMarkers = map => {
-    stores.items.map(store => {
-      const image = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+    stores.items.map((store, index) => {
+      const image = {
+        url: 'http://maps.gstatic.com/mapfiles/ms2/micons/blue.png',
+        scaledSize: new google.maps.Size(42, 42),
+        origin: new google.maps.Point(0, -6),
+        anchor: new google.maps.Point(0, 0)
+      }
+      const imageFav = {
+        url: 'http://maps.gstatic.com/mapfiles/ms2/micons/green.png',
+        scaledSize: new google.maps.Size(42, 42),
+        origin: new google.maps.Point(0, -6),
+        anchor: new google.maps.Point(0, 0)
+      }
+
       let marker;
       if (store.loc.length > 0){
         marker = new google.maps.Marker({
           position: {lat: store.loc[0], lng: store.loc[1]},
           map: map,
           animation: google.maps.Animation.DROP,
-          title: store.Name
+          title: store.Name,
+          label: index.toString(),
+          icon: image
         })
 
-        //on click add to my list
+        //on click add to my favorites list
         marker.addListener('click', () => {
+          store = {
+            ...store,
+            id: index
+          }
           this.props.handleAddFavs(store)
-          marker.setIcon(image)
+          marker.setIcon(imageFav)
         });
 
         var contentString = `
-          <div id="content">
-            <p>${marker.title}</p>
-            <p>${marker.position}</p>
+          <div class="content">
+            <p>${index} | ${marker.title}</p>
             <p>${store.Address}</p>
           </div>`
 

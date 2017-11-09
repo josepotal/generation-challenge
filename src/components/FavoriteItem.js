@@ -1,8 +1,8 @@
 import React from 'react';
 
 const FavoriteItem = props => (
-  <div className="card">
-    <p>{props.store.Name}</p>
+  <div className="fav-item">
+    <p>#{props.store.id} | {props.store.Name}</p>
   </div>
 );
 

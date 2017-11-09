@@ -3,20 +3,21 @@ import FavoriteItem from './FavoriteItem';
 
 export default class FavoritesList extends Component {
   render () {
-    const buttonText = (this.props.showFavs) ? 'Hide Favorite Store': 'Show Favorite Store'
+    const { showFavs, favStores, toggleFavsList } = this.props
+    const buttonText = (showFavs) ? 'Hide Favorite Stores': 'Show Favorite Stores'
     return(
-      <div className="favList">
-        <button onClick={this.props.toggleFavsList}>{buttonText}</button>
-        {(this.props.showFavs) ?
-          this.props.favStores.map((store, index) => {
+      <div className="fav-list">
+        <button className="fav-list-button" onClick={toggleFavsList}>{buttonText}</button>
+        {(showFavs) ?
+          favStores.map(store => {
             return (
               <FavoriteItem
-                key={index}
+                key={store.id}
                 store={store}
               />
             );
           })
-        : <div>(Click on the icons to add them to your Favorites List)</div>
+        : <div className="fav-list-message">(Click on the icons to add them to your Favorites List)</div>
         }
       </div>
     )
