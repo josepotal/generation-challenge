@@ -20,7 +20,9 @@ export default class App extends Component {
   // function handle click update state
   handleAddFavs(store){
     let { favStores } = this.state
-    if (favStores.includes(store)) {
+    let idsArray = []
+    favStores.map(store => idsArray.push(store.id))
+    if (idsArray.includes(store.id)) {
       return 'already added';
     }
     favStores = [...favStores, store];

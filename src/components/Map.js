@@ -22,6 +22,7 @@ export default class Map extends Component {
   }
 
   setMarkers = map => {
+    // eslint-disable-next-line
     stores.items.map((store, index) => {
       const image = {
         url: 'http://maps.gstatic.com/mapfiles/ms2/micons/blue.png',
@@ -88,5 +89,5 @@ export default class Map extends Component {
 Map.propTypes = {
   initialPosition: PropTypes.object.isRequired,
   stores: PropTypes.array,
-  store: PropTypes.object 
+  store: PropTypes.object
 };
