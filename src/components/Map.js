@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import stores from '../utils/coords_store_directory.json'
-
-//import data from '../utils/address-converter.js'
 
 const google = window.google;
 
@@ -48,7 +47,7 @@ export default class Map extends Component {
           icon: image
         })
 
-        //on click add to my favorites list
+        //onClick add to my favorites list
         marker.addListener('click', () => {
           store = {
             ...store,
@@ -64,7 +63,7 @@ export default class Map extends Component {
             <p>${store.Address}</p>
           </div>`
 
-        //on Hover show info
+        //onHover show info
         const infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -86,6 +85,8 @@ export default class Map extends Component {
   }
 }
 
-// Map.propTypes = {
-//   initialPosition: React.PropTypes.object.isRequired
-// };
+Map.propTypes = {
+  initialPosition: PropTypes.object.isRequired,
+  stores: PropTypes.array,
+  store: PropTypes.object 
+};

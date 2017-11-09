@@ -19,10 +19,11 @@ export default class App extends Component {
 
   // function handle click update state
   handleAddFavs(store){
-    if (this.state.favStores.includes(store)) {
+    let { favStores } = this.state
+    if (favStores.includes(store)) {
       return 'already added';
     }
-    const favStores = [...this.state.favStores, store];
+    favStores = [...favStores, store];
     this.setState({
       favStores
     });
@@ -30,8 +31,9 @@ export default class App extends Component {
 
   // function to show/hide list
   toggleFavsList(){
+    const { showFavs } = this.state
     this.setState({
-      showFavs: !this.state.showFavs
+      showFavs: !showFavs
     })
   }
 

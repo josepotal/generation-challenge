@@ -1,21 +1,21 @@
-// we import the json data locally
 import data from './store_directory.json'
 
 const google = window.google
 
-console.log(data)
-//let sliced1Data = data.items.slice(269, 273);
-//console.log(sliced1Data)
+/* Slicing data
+  let sliced1Data = data.items.slice(269, 273);
+  console.log(sliced1Data)
+*/
+
 let newArray = []
 
 data.map((item, index) => {
-  //console.log(geocodeAddress(item))
   const loc = geocodeAddress(item)
   console.log(loc)
   item = {...item, loc}
   newArray.push(item)
 })
-console.log(newArray)
+
 
 export default data;
 
@@ -40,43 +40,3 @@ function geocodeAddress(item){
   })
   return loc
 }
-
-// var id = setInterval(function(){
-//   console.log('time')
-// }, 1000)
-
-
-//========================================
-// we import the json data locally
-// import data from 'json!../../mini-store_directory.json'
-// console.log(data.items[0].Address)
-//
-// const item = data.items[0]
-// console.log(item)
-// var loc = codeAddress(data.items[0].Address.toLowerCase())
-//
-// console.log(loc)
-//
-// export default data;
-
-// // helper function to convert address to latitude and longitude
-// function codeAddress(address) {
-//     var geocoder = new google.maps.Geocoder();
-//     var loc=[];
-//
-//     // next line creates asynchronous request
-//     geocoder.geocode( { 'address': address}, function(results, status) {
-//       // and this is function which processes response
-//       if (status == google.maps.GeocoderStatus.OK) {
-//         loc[0]=results[0].geometry.location.lat();
-//         loc[1]=results[0].geometry.location.lng();
-//
-//         alert( loc ); // the place where loc contains geocoded coordinates
-//
-//       } else {
-//         alert('Geocode was not successful for the following reason: ' + status);
-//       }
-//     });
-//
-//     return loc;
-// }

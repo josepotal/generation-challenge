@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
 import FavoriteItem from './FavoriteItem';
 
-export default class FavoritesList extends Component {
+class FavoritesList extends Component {
   render () {
     const { showFavs, favStores, toggleFavsList } = this.props
     const buttonText = (showFavs) ? 'Hide Favorite Stores': 'Show Favorite Stores'
@@ -23,3 +25,11 @@ export default class FavoritesList extends Component {
     )
   }
 }
+
+FavoritesList.propTypes = {
+  showFavs: PropTypes.bool.isRequired,
+  favStores: PropTypes.array,
+  toggleFavsList: PropTypes.func.isRequired,
+};
+
+export default FavoritesList;
