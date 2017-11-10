@@ -3,37 +3,29 @@
 import data from './store_directory.json'
 import database from './database';
 
-// testing small chunks
-const dataSlice = data.slice(0,10)
-
 const google = window.google
 
 // loop to get lat/long to every address (delay appplied to avoid query limit)
 let i = 0;
 function getLatLong() {
     let id = i;
-    let loc = geocodeAddress(dataSlice[i])
-
-    if (loc === undefined) {
-      loc = []
-    }
+    let loc = geocodeAddress(data[i])
     let item = {
-      ...dataSlice[i],
-      loc,
+      ...data[i-1],
+      loc: loc || [],
       id
     }
-    if (i++ < dataSlice.length) {
-        setTimeout(getLatLong, 500);
-    }
 
+    if (++i < data.length) {
+      setTimeout(getLatLong, 2000);
+    }
     database.ref('/stores')
       .push(item)
 }
 
-
 export default getLatLong();
 
-// address to decode addresses into latitudes and longitudes
+// function to decode addresses into latitudes and longitudes
 let loc = [];
 function geocodeAddress(item){
   const geocoder = new google.maps.Geocoder();
@@ -49,6 +41,7 @@ function geocodeAddress(item){
           console.log('exceeded')
         }
       }
+      loc = []
   })
   return loc
 }

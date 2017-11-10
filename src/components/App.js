@@ -6,7 +6,7 @@ import FavoritesList from './FavoritesList';
 
 export default class App extends Component {
 
-  // initial state
+  //initial state
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ export default class App extends Component {
     this.toggleFavsList = this.toggleFavsList.bind(this);
   }
 
-  // function handle click update state
+  //function handle click update state
   handleAddFavs(store){
     let { favStores } = this.state
     let idsArray = []
@@ -31,7 +31,7 @@ export default class App extends Component {
     });
   }
 
-  // function to show/hide list
+  //function to show/hide list
   toggleFavsList(){
     const { showFavs } = this.state
     this.setState({
