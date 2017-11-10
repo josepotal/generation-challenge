@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// local static data
 import stores from '../utils/coords_store_directory.json'
+
+// populate Firebase Database
+import data from '../utils/address-converter.js'
+
+//getStores from Firebase
+//import data2 from '../utils/getStores.js'
+//console.log(data2)
+
+// var obj = JSON.parse(localStorage.getItem('cleanStores'));
+// console.log(obj)
 
 const google = window.google;
 
@@ -38,7 +49,7 @@ export default class Map extends Component {
       }
 
       let marker;
-      if (store.loc.length > 0){
+      if (store.loc){
         marker = new google.maps.Marker({
           position: {lat: store.loc[0], lng: store.loc[1]},
           map: map,
