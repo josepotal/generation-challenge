@@ -1,12 +1,15 @@
 # Generation Challenge
 
-This project uses to place Generation stores in Mexico City and create a list of favorites Stores. It is built with React and Google Maps API.
+This project uses to place stores in Mexico City and create a list of favorites Stores. It is built with React and Google Maps API, with Firebase database.
 
 ### Features
 - The student is able to see a map of Mexico City
 - The student is able to see the stores (represented as markers) on the map. The location data was given with address (e.g: BOULEVARD MANUEL AVILA CAMACHO NO. 491 COL. PERIODISTAS C.P.11220"), so they needed to be converted into coords (latitude and longitude) by the use of Google Maps Geocoding API.
-Note: Not all the addresses could have been converted automatically, for a later phase the rest of address will be added to the map. Also, the Google Maps Geocoding API, had a limited query per time, so the addresses data has been converted into coords by chunks.
+Note: Not all the addresses could have been converted automatically, for a later phase the rest of address will be added to the map.
 - The student is able to click on a store's marker. And this will be added to a list of 'My Favorite Stores'. This list of favorites store can be shown or hidden by clicking on the button "Show/Hide Favorite Stores".
+
+### Technicalities
+- Firebase is used to store and serve the data, once it is converted to coordinates. A script 'addressConverter.js' is needed to store the data, by delaying the query request to Google Maps Geocoding API, in order to not exceed the limit. Once the data is stored in Firebase, it is retrieved to print in on the screen.
 - The design is responsive, and adaptable to the screen of the device used.
 
 
