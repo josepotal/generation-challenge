@@ -6,7 +6,7 @@ const config = {
   databaseURL: 'https://generation-a9f80.firebaseio.com',
   projectId: 'generation-a9f80',
   storageBucket: '',
-  messagingSenderId: '818437071588'
+  messagingSenderId: '818437071588',
 };
 
 firebase.initializeApp(config);
