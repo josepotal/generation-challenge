@@ -1,41 +1,28 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Header from '../components/Header/Header';
 import Map from './components/Map/Map';
 import FavoritesList from './components/FavoritesList/FavoritesList';
+import * as actions from './StoresActions';
 
-export default class StoresContainer extends Component {
-  // initial state
-  state = {
-    favStores: [],
-    showFavs: false,
-  };
-
+class StoresContainer extends Component {
   // function handle click update state
   handleAddFavs = store => {
-    let { favStores } = this.state;
-    const idsArray = [];
-    favStores.map(storeItem => idsArray.push(storeItem.id));
-    if (idsArray.includes(store.id)) {
-      return 'already added';
-    }
-    favStores = [...favStores, store];
-    this.setState({
-      favStores,
-    });
-    return null;
+    const { addFavoriteStore } = this.props.actions;
+    addFavoriteStore(store);
   };
 
   // function to show/hide list
   toggleFavsList = () => {
-    const { showFavs } = this.state;
-    this.setState({
-      showFavs: !showFavs,
-    });
+    const { toggleFavsList } = this.props.actions;
+    toggleFavsList();
   };
 
   render() {
-    const { favStores, showFavs } = this.state;
+    const { favStores, showFavs } = this.props;
     return (
       <div>
         <Header />
@@ -53,3 +40,30 @@ export default class StoresContainer extends Component {
     );
   }
 }
+
+StoresContainer.propTypes = {
+  actions: PropTypes.shape({
+    addFavoriteStore: PropTypes.func.isRequired,
+    toggleFavsList: PropTypes.func.isRequired,
+  }).isRequired,
+  showFavs: PropTypes.bool.isRequired,
+  favStores: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      Name: PropTypes.string.isRequired,
+      Address: PropTypes.string.isRequired,
+      loc: PropTypes.arrayOf(PropTypes.number.isRequired),
+    }),
+  ).isRequired,
+};
+
+const mapStateToProps = state => ({
+  favStores: state.favoriteStores.favStores,
+  showFavs: state.favoriteStores.showFavs,
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoresContainer);
