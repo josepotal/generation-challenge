@@ -1,0 +1,42 @@
+@value colors: '../../../styles/variables.scss';
+@value blue from colors;
+
+.favList {
+  position: absolute;
+  top: 70px;
+  left: 70%;
+  background-color: lighten(#ddd, 8%);
+  width: 150px;
+}
+
+.button {
+  width: 100%;
+  height: 32px;
+  font-size: 0.75em;
+  font-weight: bold;
+  display: block;
+  background-color: white;
+  color: #009be3;
+  border: 2px solid #009be3;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.message {
+  font-size: 0.7em;
+  color: blue;
+  background-color: lighten(#ddd, 8%);
+  text-align: center;
+  border-radius: 5px;
+}
+
+//media query small screens
+@media screen and (max-width: 640px) {
+  .favList {
+    position: absolute;
+    top: 70px;
+    left: 37%;
+    background-color: lighten(#ddd, 8%);
+    width: 150px;
+  }
+}

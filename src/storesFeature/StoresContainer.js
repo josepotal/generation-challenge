@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 
-import Header from './Header';
-import Map from './Map';
-import FavoritesList from './FavoritesList';
+import Header from '../components/Header/Header';
+import Map from './components/Map/Map';
+import FavoritesList from './components/FavoritesList/FavoritesList';
 
-export default class App extends Component {
+export default class StoresContainer extends Component {
   // initial state
-  constructor(props) {
-    super(props);
-    this.state = {
-      favStores: [],
-      showFavs: false,
-    };
-    this.handleAddFavs = this.handleAddFavs.bind(this);
-    this.toggleFavsList = this.toggleFavsList.bind(this);
-  }
+  state = {
+    favStores: [],
+    showFavs: false,
+  };
 
   // function handle click update state
-  handleAddFavs(store) {
+  handleAddFavs = store => {
     let { favStores } = this.state;
     const idsArray = [];
     favStores.map(storeItem => idsArray.push(storeItem.id));
@@ -29,15 +24,15 @@ export default class App extends Component {
       favStores,
     });
     return null;
-  }
+  };
 
   // function to show/hide list
-  toggleFavsList() {
+  toggleFavsList = () => {
     const { showFavs } = this.state;
     this.setState({
       showFavs: !showFavs,
     });
-  }
+  };
 
   render() {
     const { favStores, showFavs } = this.state;

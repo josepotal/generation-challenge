@@ -1,0 +1,10 @@
+@value colors: '../../../styles/variables.scss';
+@value lightBlue from colors;
+
+.favItem {
+  border-bottom: 1px solid lightBlue;
+  p {
+    text-align: center;
+    font-size: 0.7em;
+  }
+}

@@ -1,3 +1,6 @@
+@value colors: '../../../styles/variables.scss';
+@value lightGrey from colors;
+
 .mapContainer {
   margin: 0 auto;
   width: 100%;
@@ -6,7 +9,7 @@
 
 .content {
   max-width: 160px;
-  color: darken($color-grey,30%);
+  color: lightGrey;
   text-align: center;
   p:nth-child(1) {
     font-size: 0.85em;

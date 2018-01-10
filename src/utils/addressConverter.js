@@ -1,6 +1,6 @@
 /* populate Firebase DB with the json data with latitudes and longitudes */
-import data from './store_directory.json';
-import database from './database';
+import data from '../data/store_directory.json';
+import database from '../data/database';
 
 const { google } = window;
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import database from '../utils/database';
+import './Map.scss';
+
+import database from '../../../data/database';
 
 const { google } = window;
 

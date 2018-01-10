@@ -1,0 +1,16 @@
+@value colors: '../../styles/variables.scss';
+@value lightBlue, white from colors;
+
+.header {
+  height: 60px;
+  background: lightBlue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: white;
+}
