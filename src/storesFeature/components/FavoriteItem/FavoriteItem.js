@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './FavoriteItem.module.scss';
+import './FavoriteItem.module.scss';
 
 const FavoriteItem = props => (
-  <div className={styles.favItem}>
+  <div className="favItem">
     <p>
       #{props.store.id} | {props.store.Name}
     </p>

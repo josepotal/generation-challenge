@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoriteItem component 1`] = `
+<div
+  className="favItem"
+>
+  <p>
+    #
+    176
+     | 
+    La Tienda Especiál 3777-Valle de Aragón 
+  </p>
+</div>
+`;

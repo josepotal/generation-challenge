@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FavoriteItem from '../FavoriteItem/FavoriteItem';
-import styles from './FavoritesList.module.scss';
+import './FavoritesList.module.scss';
 
 function FavoritesList({ showFavs, favStores, toggleFavsList }) {
   const buttonText = showFavs ? 'Hide Favorite Stores' : 'Show Favorite Stores';
   return (
-    <div className={styles.favList}>
-      <button className={styles.button} onClick={toggleFavsList}>
+    <div className="favList">
+      <button className="button" onClick={toggleFavsList}>
         {buttonText}
       </button>
       {showFavs ? (
         favStores.map(store => <FavoriteItem key={store.id} store={store} />)
       ) : (
-        <div className={styles.message}>
+        <div className="message">
           (Click on the icons to add them to your Favorites List)
         </div>
       )}
@@ -22,8 +22,13 @@ function FavoritesList({ showFavs, favStores, toggleFavsList }) {
   );
 }
 
+FavoritesList.defaultProps = {
+  showFavs: false,
+  favStores: [],
+};
+
 FavoritesList.propTypes = {
-  showFavs: PropTypes.bool.isRequired,
+  showFavs: PropTypes.bool,
   favStores: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -31,7 +36,7 @@ FavoritesList.propTypes = {
       Address: PropTypes.string.isRequired,
       loc: PropTypes.arrayOf(PropTypes.number.isRequired),
     }),
-  ).isRequired,
+  ),
   toggleFavsList: PropTypes.func.isRequired,
 };
 
