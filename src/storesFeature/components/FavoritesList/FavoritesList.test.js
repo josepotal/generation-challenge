@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import FavoritesList from './FavoritesList';
+import FavoriteItem from '../FavoriteItem/FavoriteItem';
 
 describe('FavoritesList', () => {
   /* props and mountedFavoritesList will be available inside the describe */
@@ -10,7 +11,7 @@ describe('FavoritesList', () => {
   /* function to return FavoritesList alrady mounted or with the current props */
   const favoritesList = () => {
     if (!mountedFavoritesList) {
-      mountedFavoritesList = mount(<FavoritesList {...props} />);
+      mountedFavoritesList = shallow(<FavoritesList {...props} />);
     }
     return mountedFavoritesList;
   };
@@ -31,49 +32,89 @@ describe('FavoritesList', () => {
     const divs = favoritesList().find('div');
     expect(divs.length).toBeGreaterThan(0);
   });
-});
 
-// import React from 'react';
-// import renderer from 'react-test-renderer';
-//
-// import FavoritesList from './FavoritesList';
-//
-// test('FavoritesList component', () => {
-// const favStores = [
-//   {
-//     Address:
-//       'Valle  Santiago  N° 102  Col. Valle  de  Aragon  CP. 57100  Nezahualcoyotl  Estado  de  Mexico',
-//     Name: 'La Tienda Especiál 3777-Valle de Aragón ',
-//     id: 176,
-//     loc: [19.4893963, -99.05444829999999],
-//   },
-// ];
-// const showFavs = true;
-// const toggleFavsList = jest.fn();
-//
-//   const component = renderer.create(
-//     <FavoritesList
-//       favStores={favStores}
-//       showFavs={showFavs}
-//       toggleFavsList={toggleFavsList}
-//     />,
-//   );
-//   const tree = component.toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
-//
-// test('FavoritesList component favorites close', () => {
-//   const favStores = [];
-//   const showFavs = false;
-//   const toggleFavsList = jest.fn();
-//
-//   const component = renderer.create(
-//     <FavoritesList
-//       favStores={favStores}
-//       showFavs={showFavs}
-//       toggleFavsList={toggleFavsList}
-//     />,
-//   );
-//   const tree = component.toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
+  it('it should have favList className', () => {
+    expect(favoritesList().find('.favList').length).toBe(1);
+  });
+
+  it('button tag should receive toggleFavsList prop', () => {
+    expect(
+      favoritesList()
+        .find('button')
+        .prop('onClick'),
+    ).toBe(props.toggleFavsList);
+  });
+
+  it('button tag should trigger the toggleFavsList function', () => {
+    favoritesList()
+      .find('button')
+      .simulate('click');
+    expect(props.toggleFavsList).toHaveBeenCalled();
+  });
+
+  describe('if showFavs is false and favStores is empty (inital state)', () => {
+    beforeEach(() => {
+      props.favStores = [];
+    });
+    it('it should not render `Favorite Item` if favStores is empty', () => {
+      expect(favoritesList().find(FavoriteItem).length).toBe(0);
+    });
+
+    it('button tag should display the `Show Favorite Stores` text', () => {
+      expect(
+        favoritesList()
+          .find('button')
+          .children()
+          .text(),
+      ).toBe('Show Favorite Stores');
+    });
+
+    it('div with message className should be `(Click on the icons to add them to your Favorites List)` text', () => {
+      expect(
+        favoritesList()
+          .children('.message')
+          .text(),
+      ).toBe('(Click on the icons to add them to your Favorites List)');
+    });
+  });
+
+  describe('if showFavs is true', () => {
+    beforeEach(() => {
+      props.showFavs = true;
+    });
+
+    it('button tag should display the `Hide Favorite Stores` text', () => {
+      expect(
+        favoritesList()
+          .find('button')
+          .children()
+          .text(),
+      ).toBe('Hide Favorite Stores');
+    });
+
+    it('should not appear the div with className message', () => {
+      expect(favoritesList().find('.message').length).toBe(0);
+    });
+  });
+
+  describe('if favStores is not empty', () => {
+    const favStores = [
+      {
+        Address:
+          'Valle  Santiago  N° 102  Col. Valle  de  Aragon  CP. 57100  Nezahualcoyotl  Estado  de  Mexico',
+        Name: 'La Tienda Especiál 3777-Valle de Aragón ',
+        id: 176,
+        loc: [19.4893963, -99.05444829999999],
+      },
+    ];
+
+    beforeEach(() => {
+      props.favStores = favStores;
+      props.showFavs = true;
+    });
+
+    it('should render Favorite Item', () => {
+      expect(favoritesList().find(FavoriteItem).length).toBe(1);
+    });
+  });
+});
