@@ -1,12 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header component 1`] = `
-<header
-  className={undefined}
->
-  <div
-    className={undefined}
-  >
+<header>
+  <div>
      Stores Directory 
   </div>
 </header>

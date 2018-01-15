@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FavoriteItem component 1`] = `
+exports[`FavoriteItem it should receive a store prop 1`] = `
 <div
   className="favItem"
 >

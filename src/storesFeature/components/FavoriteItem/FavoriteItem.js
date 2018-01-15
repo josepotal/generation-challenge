@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import './FavoriteItem.module.scss';
 
-const FavoriteItem = props => (
+const FavoriteItem = ({ store }) => (
   <div className="favItem">
     <p>
-      #{props.store.id} | {props.store.Name}
+      #{store.id} | {store.Name}
     </p>
   </div>
 );

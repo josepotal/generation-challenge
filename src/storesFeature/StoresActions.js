@@ -1,3 +1,5 @@
+/* Use redux-saga */
+
 import * as types from './StoresActionsTypes';
 
 export const addFavoriteStore = store => (dispatch, getState) => {

@@ -1,11 +1,13 @@
+/** Use immutable.js?? */
+
 import { ADD_FAVORITE, TOGGLE_FAVORITES_LIST } from './StoresActionsTypes';
 
-const initialState = {
+export const initialState = {
   favStores: [],
   showFavs: false,
 };
 
-export default function todos(state = initialState, action) {
+export default function storesReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_FAVORITE:
       return {
