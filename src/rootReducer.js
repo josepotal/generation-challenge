@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import favoriteStores from './storesFeature/StoresReducer';
+import storesReducer from './storesFeature/StoresReducer';
 
 const rootReducer = combineReducers({
-  favoriteStores,
+  storesReducer,
 });
 
 export default rootReducer;

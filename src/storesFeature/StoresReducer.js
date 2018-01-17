@@ -23,3 +23,7 @@ export default function storesReducer(state = initialState, action) {
       return state;
   }
 }
+
+/* Selectors */
+export const getShowFavs = state => state.storesReducer.showFavs;
+export const getFavStores = state => state.storesReducer.favStores;

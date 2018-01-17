@@ -1,9 +1,8 @@
 /* Use redux-saga */
-
 import * as types from './StoresActionsTypes';
 
 export const addFavoriteStore = store => (dispatch, getState) => {
-  let { favoriteStores: { favStores } } = getState();
+  let { storesReducer: { favStores } } = getState();
   const idsArray = [];
   favStores.map(storeItem => idsArray.push(storeItem.id));
   if (idsArray.includes(store.id)) {
@@ -18,7 +17,7 @@ export const addFavoriteStore = store => (dispatch, getState) => {
 };
 
 export const toggleFavsList = () => (dispatch, getState) => {
-  const { favoriteStores: { showFavs } } = getState();
+  const { storesReducer: { showFavs } } = getState();
   dispatch({
     type: types.TOGGLE_FAVORITES_LIST,
     showFavs: !showFavs,

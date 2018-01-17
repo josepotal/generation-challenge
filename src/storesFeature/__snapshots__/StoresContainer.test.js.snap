@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoresContainer not connected it should receive a store prop 1`] = `
+<div>
+  <Map
+    favStores={Array []}
+    handleAddFavs={[Function]}
+    initialPosition={
+      Object {
+        "lat": 19.43236,
+        "lng": -99.1332,
+      }
+    }
+  />
+  <FavoritesList
+    favStores={Array []}
+    showFavs={false}
+    toggleFavsList={[Function]}
+  />
+</div>
+`;

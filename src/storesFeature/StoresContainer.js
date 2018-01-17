@@ -5,8 +5,9 @@ import { bindActionCreators } from 'redux';
 
 import { Map, FavoritesList } from './components';
 import * as actions from './StoresActions';
+import { getShowFavs, getFavStores } from './StoresReducer';
 
-class StoresContainer extends Component {
+export class StoresContainer extends Component {
   // function handle click update state
   handleAddFavs = store => {
     const { addFavoriteStore } = this.props.actions;
@@ -55,8 +56,8 @@ StoresContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  favStores: state.favoriteStores.favStores,
-  showFavs: state.favoriteStores.showFavs,
+  favStores: getFavStores(state),
+  showFavs: getShowFavs(state),
 });
 
 const mapDispatchToProps = dispatch => ({

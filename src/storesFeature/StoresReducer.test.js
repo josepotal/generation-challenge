@@ -1,4 +1,8 @@
-import storesReducer, { initialState } from './StoresReducer';
+import storesReducer, {
+  initialState,
+  getShowFavs,
+  getFavStores,
+} from './StoresReducer';
 import * as types from './StoresActionsTypes';
 
 describe('Stores Reducer', () => {
@@ -83,6 +87,28 @@ describe('Stores Reducer', () => {
           ...state,
           favStores: [...state.favStores, store2],
         });
+      });
+    });
+
+    /* could be like testing mapStateToProps */
+    describe('StoresReducer selectors', () => {
+      let state;
+
+      beforeEach(() => {
+        state = {
+          storesReducer: {
+            showFavs: false,
+            favStores: [store1, store2],
+          },
+        };
+      });
+
+      it('should return the current showFavs state', () => {
+        expect(getShowFavs(state)).toBe(false);
+      });
+
+      it('should return the showFavs state', () => {
+        expect(getFavStores(state)).toEqual([store1, store2]);
       });
     });
   });
